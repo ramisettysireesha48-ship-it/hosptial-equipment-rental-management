@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Equipment Rental Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>🏥 Hospital Equipment Rental Management</h1>
+    <p>Manage medical equipment, rentals and returns</p>
+</header>
+
+<nav>
+    <button onclick="showPage('dashboard')">Dashboard</button>
+    <button onclick="showPage('equipment')">Equipment</button>
+    <button onclick="showPage('rental')">Rent Equipment</button>
+    <button onclick="showPage('history')">Rental History</button>
+</nav>
+
+<main>
+
+    <!-- Dashboard -->
+    <section id="dashboard" class="page">
+        <h2>Dashboard</h2>
+
+        <div class="cards">
+            <div class="card">
+                <h3 id="totalEquipment">0</h3>
+                <p>Total Equipment</p>
+            </div>
+
+            <div class="card">
+                <h3 id="availableEquipment">0</h3>
+                <p>Available Equipment</p>
+            </div>
+
+            <div class="card">
+                <h3 id="rentedEquipment">0</h3>
+                <p>Rented Equipment</p>
+            </div>
+
+            <div class="card">
+                <h3 id="revenue">₹0</h3>
+                <p>Total Revenue</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Equipment -->
+    <section id="equipment" class="page hidden">
+
+        <h2>Equipment Management</h2>
+
+        <form id="equipmentForm">
+
+            <input
+                type="text"
+                id="equipmentName"
+                placeholder="Equipment Name"
+                required
+            >
+
+            <input
+                type="text"
+                id="category"
+                placeholder="Category"
+                required
+            >
+
+            <input
+                type="number"
+                id="price"
+                placeholder="Daily Rental Price"
+                min="1"
+                required
+            >
+
+            <button type="submit">Add Equipment</button>
+
+        </form>
+
+        <input
+            type="text"
+            id="search"
+            placeholder="Search equipment..."
+            onkeyup="displayEquipment()"
+        >
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Equipment</th>
+                    <th>Category</th>
+                    <th>Price/Day</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="equipmentTable"></tbody>
+
+        </table>
+
+    </section>
+
+
+    <!-- Rental -->
+    <section id="rental" class="page hidden">
+
+        <h2>Rent Equipment</h2>
+
+        <form id="rentalForm">
+
+            <select id="equipmentSelect" required>
+                <option value="">Select Equipment</option>
+            </select>
+
+            <input
+                type="text"
+                id="patientName"
+                placeholder="Patient Name"
+                required
+            >
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Phone Number"
+                required
+            >
+
+            <input
+                type="number"
+                id="days"
+                placeholder="Number of Days"
+                min="1"
+                required
+            >
+
+            <button type="submit">Rent Equipment</button>
+
+        </form>
+
+    </section>
+
+
+    <!-- Rental History -->
+    <section id="history" class="page hidden">
+
+        <h2>Rental History</h2>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Rental ID</th>
+                    <th>Patient</th>
+                    <th>Phone</th>
+                    <th>Equipment</th>
+                    <th>Days</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="rentalTable"></tbody>
+
+        </table>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>Hospital Equipment Rental Management System © 2026</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
